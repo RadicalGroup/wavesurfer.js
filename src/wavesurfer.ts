@@ -80,6 +80,8 @@ export type WaveSurferOptions = {
   cspNonce?: string
   /** Override the Blob MIME type */
   blobMimeType?: string
+  /** Minimum height of bars in pixels (default: 1) */
+  barMinHeight?: number
 }
 
 const defaultOptions = {
