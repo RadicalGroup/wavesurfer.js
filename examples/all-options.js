@@ -55,6 +55,8 @@ const options = {
   autoCenter: true,
   /** Decoding sample rate. Doesn't affect the playback. Defaults to 8000 */
   sampleRate: 8000,
+  /** Minimum height of bars in pixels */
+  barMinHeight: 1,
 }
 
 const wavesurfer = WaveSurfer.create(options)
@@ -127,6 +129,12 @@ const schema = {
     min: 8000,
     max: 48000,
     step: 1000,
+  },
+  barMinHeight: {
+    value: 1,
+    min: 1,
+    max: 20,
+    step: 1,
   },
 }
 

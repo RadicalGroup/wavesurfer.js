@@ -162,55 +162,7 @@ Most options, events, and methods are similar to those in previous versions.
  * `splitChannelsOptions` – you should now use `splitChannels` to pass the channel options. Pass `height: 0` to hide a channel. See [this example](https://wavesurfer.xyz/examples/?split-channels.js).
  * `drawingContextAttributes`, `maxCanvasWidth`, `forceDecode` – removed to reduce code complexity
  * `xhr` - please use `fetchParams` instead
- * `barMinHeight` - the minimum bar height is now 1 pixel by default
+ * `barMinHeight` - minimum height of bars in pixels (default: 1)
 
 ### Removed methods
- * `getFilters`, `setFilter` – see the [Web Audio example](https://wavesurfer.xyz/examples/?webaudio.js)
- * `drawBuffer` – to redraw the waveform, use `setOptions` instead and pass new rendering options
- * `cancelAjax` – you can pass an [AbortSignal](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal) in `fetchParams`
- * `skipForward`, `skipBackward`, `setPlayEnd` – can be implemented using `setTime(time)`
- * `exportPCM` is replaced with `exportPeaks` which returns arrays of floats
- * `toggleMute` is now called `setMuted(true | false)`
- * `setHeight`, `setWaveColor`, `setCursorColor`, etc. – use `setOptions` with the corresponding params instead. E.g., `wavesurfer.setOptions({ height: 300, waveColor: '#abc' })`
-
-See the complete [documentation of the new API](http://wavesurfer.xyz/docs).
-
-## Development
-
-To get started with development, follow these steps:
-
- 1. Install dev dependencies:
-
-```
-yarn
-```
-
- 2. Start the TypeScript compiler in watch mode and launch an HTTP server:
-
-```
-yarn start
-```
-
-This command will open http://localhost:9090 in your browser with live reload, allowing you to see the changes as you develop.
-
-## Tests
-
-The tests are written in the Cypress framework. They are a mix of e2e and visual regression tests.
-
-To run the test suite locally, first build the project:
-```
-yarn build
-```
-
-Then launch the tests:
-```
-yarn cypress
-```
-
-## Feedback
-
-We appreciate your feedback and contributions!
-
-If you encounter any issues or have suggestions for improvements, please don't hesitate to post in our [forum](https://github.com/wavesurfer-js/wavesurfer.js/discussions/categories/q-a).
-
-We hope you enjoy using wavesurfer.js and look forward to hearing about your experiences with the library!
+ * `getFilters`, `setFilter`

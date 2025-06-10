@@ -14,6 +14,8 @@ const wavesurfer = WaveSurfer.create({
   barGap: 1,
   // And the bar radius
   barRadius: 2,
+  // Minimum bar height
+  barMinHeight: 4,
 })
 
 wavesurfer.once('interaction', () => {

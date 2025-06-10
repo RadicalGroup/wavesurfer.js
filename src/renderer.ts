@@ -377,14 +377,31 @@ class Renderer extends EventEmitter<RendererEvents> {
       if (x > prevX) {
         const topBarHeight = Math.round(maxTop * halfHeight * vScale)
         const bottomBarHeight = Math.round(maxBottom * halfHeight * vScale)
-        const barHeight = topBarHeight + bottomBarHeight || 1
+        let barHeight = topBarHeight + bottomBarHeight || 1
+        // Enforce minimum bar height
+        const minBarHeight = options.barMinHeight || 1
+        barHeight = Math.max(barHeight, minBarHeight)
 
         // Vertical alignment
         let y = halfHeight - topBarHeight
-        if (options.barAlign === 'top') {
-          y = 0
-        } else if (options.barAlign === 'bottom') {
-          y = height - barHeight
+        if (barHeight === minBarHeight) {
+          // If enforcing min height, align properly
+          if (options.barAlign === 'top') {
+            y = 0
+          } else if (options.barAlign === 'bottom') {
+            y = height - barHeight
+          } else {
+            // Centered
+            y = (height - barHeight) / 2
+          }
+        } else {
+          // Normal alignment
+          y = halfHeight - topBarHeight
+          if (options.barAlign === 'top') {
+            y = 0
+          } else if (options.barAlign === 'bottom') {
+            y = height - barHeight
+          }
         }
 
         ctx[rectFn](prevX * (barWidth + barGap), y, barWidth, barHeight, barRadius)
